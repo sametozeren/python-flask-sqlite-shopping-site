@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block baslik %}
+Sepetim - Little
+{% endblock baslik %}
+{% block stil %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/cart.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/cart_responsive.css') }}">
+{% endblock stil %}
+
+{% block icerik%}
+<!-- Home -->
+		<div class="home">
+			<div class="home_container d-flex flex-column align-items-center justify-content-end">
+				<div class="home_content text-center">
+					<div class="home_title">Geçmiş Siparişlerim</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="cart_section">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="cart_container">
+							
+							<!-- Cart Bar -->
+							<div class="cart_bar">
+								<ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
+									<li class="mr-auto">Ürün</li>
+									<li style="width:145px;">İşlem Tarihi/Saati</li>
+									<li></li>
+									<li>Fiyat</li>
+									<li>Adet</li>
+									<li>Toplam</li>
+								</ul>
+							</div>
+
+							<!-- Cart Items -->
+							{% for yaz in siparisler %}
+							<div class="cart_items">
+								<ul class="cart_items_list">
+
+									<!-- Cart Item -->
+									<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
+										<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+											<div><div class="product_image"><img src="{{ yaz.uresim }}" alt=""></div></div>
+											<div class="product_name_container">
+												<div class="product_name"><a href="product.html">{{yaz.uismi}}</a></div>
+											</div>
+										</div>
+										<div class="product_total product_text" style="width:250px;">{{yaz.starih}}</div>
+										<div class="product_price product_text">{{yaz.ufiyat}}</div>
+										<div class="product_quantity_container">
+											<div class="product_quantity ml-lg-auto mr-lg-auto text-center">
+												<span class="product_text product_num">{{yaz.uadet}}</span>
+											</div>
+										</div>
+										<div class="product_total product_text"><span>Toplam: </span>{{yaz.utoplam}}</div>
+									</li>
+								</ul>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+{% endblock icerik %}
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/cart.js') }}"></script>
+{% endblock script %}

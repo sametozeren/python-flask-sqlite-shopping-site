@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block baslik %}
+Sepetim - Little
+{% endblock baslik %}
+{% block stil %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/cart.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/cart_responsive.css') }}">
+{% endblock stil %}
+
+{% block icerik%}
+<!-- Home -->
+		<div class="home">
+			<div class="home_container d-flex flex-column align-items-center justify-content-end">
+				<div class="home_content text-center">
+					<div class="home_title">Sepetim</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="cart_section">
+			<div class="container">
+				<div class="row">
+					{% if sepetteki != []%}
+					<div class="col">
+						<div class="cart_container">
+							
+							<!-- Cart Bar -->
+							<div class="cart_bar">
+								<ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
+									<li class="mr-auto">Ürün</li>
+									<li></li>
+									<li></li>
+									<li>Fiyat</li>
+									<li>Adet</li>
+									<li>Toplam</li>
+								</ul>
+							</div>
+
+							<!-- Cart Items -->
+							{% for yaz in sepetteki %}
+							<div class="cart_items">
+								<ul class="cart_items_list">
+
+									<!-- Cart Item -->
+									<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
+										<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+											<div><div class="product_image"><img src="{{ yaz.resim }}" alt=""></div></div>
+											<div class="product_name_container">
+												<div class="product_name"><a href="/urun/{{yaz.id}}">{{yaz.uismi}}</a></div>
+											</div>
+										</div>
+										<div class="product_color product_text" style="width:70px;">
+										<form action="/urunGuncelle/{{yaz.id}}" method="POST">
+                                            <button class="btn btn-success">Güncelle</button>
+									    </div>
+										<div class="product_size product_text">
+                                            <div class="btn btn-danger"><a href="/urunSil/{{yaz.id}}" style="color:white;">Sil</a></div>
+                                        </div>
+										<div class="product_price text-right" style="margin-right:50px;"><span>Fiyat: </span>{{yaz.fiyat}} &#8378;</div>
+										<div class="product_quantity_container">
+											<div class="product_quantity ml-lg-auto mr-lg-auto text-center">
+												<input type="text" name="adet" value="{{yaz.adet}}" style="width:20px; margin-top:5px; margin-left:3px; border:0px;">
+												</form>
+											</div>
+										</div>
+										<div class="product_total product_text"><span>Toplam: </span>{{yaz.toplam}} &#8378;</div>
+									</li>
+								</ul>
+							</div>
+							{% endfor %}
+							<!-- Cart Buttons -->
+							<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
+								<div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+									<div class="button button_clear trans_200"><a href="/sepetibosalt">Sepeti Temizle</a></div>
+									<div class="button button_continue trans_200"><a href="/siparisver">Alışverişi Tamamla</a></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% else:%}
+						<div class="col-md-12 checkout_title text-center" style="font-size:40px;">Sepet Boş!</div>
+						<div class="col-md-12 checkout_title text-center" style="font-size:30px; color:#5a5a5a;">Hemen Alışveriş Yapmaya Başlayın</div>
+						<a href="/"class="col-md-12"><button type="submit" class="btn btn-success col-md-12 checkout_button trans_200" style="border:0px;">Anasayfa</button></a>
+					{% endif %}	
+				</div>
+			</div>
+		</div>
+
+
+{% endblock icerik %}
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/cart.js') }}"></script>
+{% endblock script %}

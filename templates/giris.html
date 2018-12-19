@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block baslik %}
+Giriş - Little
+{% endblock baslik %}
+
+
+{% block stil %}
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animsition/css/animsition.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/daterangepicker/daterangepicker.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main_styles.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/responsive.css') }}">
+<!--===============================================================================================-->
+{% endblock stil %}
+
+{% block icerik%}
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100" style="margin-top:100px;">
+				<div class="login100-form-title" style="background-image: url({{ url_for('static',filename='images/bg-01.jpg') }});">
+					<span class="login100-form-title-1">
+						Üye Giriş Formu
+					</span>
+				</div>
+
+				<form action="/giris" method="POST" class="login100-form validate-form">
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Email Zorunludur">
+						<span class="label-input100">Email</span>
+						<input class="input100" type="text" name="email" placeholder="Email Adresinizi Giriniz..">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+						<span class="label-input100">Şifre</span>
+						<input class="input100" type="password" name="pass" placeholder="Şifreniz..">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="flex-sb-m w-full p-b-30">
+						<div>
+							<a href="/kayit" class="txt1">
+								Kayıtlı Değilmisin? Kayıt Ol
+							</a>
+						</div>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Giriş Yap
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock icerik%}
+
+{% block script %}
+	<script src="{{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/popper.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/daterangepicker/moment.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+{% endblock script %}

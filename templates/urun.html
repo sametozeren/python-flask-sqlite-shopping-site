@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block baslik %}
+{{urundetay.uismi}} - Little
+{% endblock baslik %}
+{% block stil %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/product.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/product_responsive.css') }}">
+{% endblock stil %}
+
+{% block icerik%}
+<!-- Product -->
+        <div class="home">
+			<div class="home_container d-flex flex-column align-items-center justify-content-end">
+				<div class="home_content text-center">
+					<div class="home_title">Ürün Detayı</div>
+				</div>
+			</div>
+		</div>
+		<div class="product">
+			<div class="container">
+				<div class="row">
+					
+					<!-- Product Image -->
+					<div class="col-lg-6">
+						<div class="product_image_slider_container">
+							<div id="slider" class="flexslider">
+								<ul class="slides">
+									<li>
+										<img src="{{ urundetay.resim }}" />
+									</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+
+					<!-- Product Info -->
+					<div class="col-lg-6 product_col">
+						<div class="product_info">
+							<div class="product_name">{{urundetay.uismi}}</div>
+							<div class="product_category"><a href="/kategori/{{kategorisi.id}}">{{kategorisi.kismi}}</a></div>
+							<div class="product_price">{{urundetay.fiyat}}<span>.99</span>&#8378;</div>
+							<div class="product_category py-3">Stok: {{urundetay.stok}} adet</div>
+							<div class="product_buttons">
+								<div class="text-right d-flex flex-row align-items-start justify-content-start" >
+									<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center" style="border-left:solid 1px #ededed">
+										<div><div><a href="/sepeteEkle/{{urundetay.id}}"><img src="{{ url_for('static',filename='images/cart.svg') }}" class="svg" alt=""></a></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+{% endblock icerik%}
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/product.js') }}"></script>
+{% endblock script %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block baslik %}
+Ürün Ekle - Little
+{% endblock baslik %}
+{% block stil %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/checkout.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/checkout_responsive.css') }}">
+{% endblock stil %}
+
+{% block icerik%}
+<div class="home" style="height:200px;">
+			<div class="home_container d-flex flex-column align-items-center justify-content-end">
+				<div class="home_content text-center">
+					<div class="home_title">OPSSSSSS!...</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Checkout -->
+			<div class="container">
+				<div class="row">
+                    <div class="col-lg-12">
+						<div class="billing">
+							<div class="checkout_title text-center">Yetkiniz Olmayan Bir Sayfaya Girmeye Çalıştınız!</div>
+								<p class="my-3 text-center">Sizi şöyle alalım..</p>
+								<a href="/"><button type="submit" class="btn btn-success col-md-12 checkout_button trans_200" style="border:0px;">Anasayfa</button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+{% endblock icerik %}
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/checkout.js') }}"></script>
+{% endblock script %}

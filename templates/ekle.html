@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block baslik %}
+Ürün Ekle - Little
+{% endblock baslik %}
+{% block stil %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/checkout.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/checkout_responsive.css') }}">
+{% endblock stil %}
+
+{% block icerik%}
+<div class="home" style="height:200px;">
+			<div class="home_container d-flex flex-column align-items-center justify-content-end">
+				<div class="home_content text-center">
+					<div class="home_title">Yeni Ürün Ekle</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Checkout -->
+			<div class="container">
+				<div class="row">
+                    <div class="col-lg-12">
+						<div class="billing">
+							<div class="checkout_title">Yeni Ürün</div>
+							<div class="checkout_form_container">
+								<form action="/ekle" method="POST" id="checkout_form" class="checkout_form">
+									<div>
+										<!-- Company -->
+										<input type="text" name="uismi" id="checkout_company" placeholder="Ürün Adı" class="checkout_input">
+									</div>
+                                    <div>
+										<!-- Company -->
+										<input type="text" name="fiyat" id="checkout_company" placeholder="Ürün Fiyatı" class="checkout_input">
+									</div>
+                                    <div>
+										<!-- Company -->
+										<input type="text" name="stok" id="checkout_company" placeholder="Kaç Adet Stokta Var?" class="checkout_input">
+									</div>
+									<div>
+										<!-- Country -->
+										<select name="kategorisec" id="checkout_country" class="dropdown_item_select checkout_input" require="required">
+											{% for yaz in kategoriler %}
+											<option value="{{yaz.id}}">{{yaz.kismi}}</option>
+											{% endfor %}
+										</select>
+									</div>
+									<div>
+										<!-- Address -->
+										<input type="text" name="resim" id="checkout_address" class="checkout_input" placeholder="Resim Linki" required="required">
+									</div>
+									<button type="submit" class="btn btn-success col-md-12 checkout_button trans_200" style="border:0px;">Ekle</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="container">
+				<div class="row">
+				 	<div class="col-md-6 py-3"><a href="/guncelle"><button type="button" class="btn btn-info col-md-12">Ürün Güncelle</button></a></div>
+					<div class="col-md-6 py-3"><a href="/sil"><button type="button" class="btn btn-danger col-md-12">Ürün Sil</button></a></div>
+				</div>
+			</div>
+{% endblock icerik %}
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/checkout.js') }}"></script>
+{% endblock script %}
